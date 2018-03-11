@@ -88,4 +88,12 @@ class _UsingAnimationControllerBodyState
       ],
     );
   }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+
 }
