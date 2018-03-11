@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations/pages/animation_controller_output.dart';
 import 'package:flutter_animations/pages/home_page.dart';
+import 'package:flutter_animations/pages/using_animation_controller.dart';
 
 void main() => runApp(new MyApp());
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       home: new HomePage(),
       routes: <String, WidgetBuilder>{
         "/animation_controller_output": (BuildContext context) => new AnimationControllerOutputPage(),
+        "/using_animation_controller": (BuildContext context) => new UsingAnimationControllerPage(),
       }
     );
   }
