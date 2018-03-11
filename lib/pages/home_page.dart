@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animations/pages/animation_controller_output.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -26,6 +25,13 @@ class ExamplesListWidget extends StatelessWidget {
             title: "AnimationController output",
             subtitle: "The simplest use for AnimationController. It's key to understand this to understand how animations workr",
             targetRoute: "/animation_controller_output"
+          ),
+          new Divider(),
+          new ListRow(
+            id: "2",
+            title: "Using AnimationController",
+            subtitle: "Examples on how to use the AnimationController",
+            targetRoute: "/using_animation_controller"
           ),
           new Divider(),
         ],
