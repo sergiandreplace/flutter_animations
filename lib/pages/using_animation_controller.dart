@@ -39,7 +39,14 @@ class _UsingAnimationControllerBodyState
     )
       ..addListener(() {
         this.setState(() {});
-      });
+      })
+    ..addStatusListener((status){
+      if (status == AnimationStatus.completed) {
+        _controller.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        _controller.forward();
+      }
+    });
 
 
     _controller.forward(from: -1.0);
