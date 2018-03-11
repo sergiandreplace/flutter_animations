@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 
@@ -24,8 +26,14 @@ class _UsingAnimationControllerBodyState
   extends State<UsingAnimationControllerBody>
   with SingleTickerProviderStateMixin {
 
+  static const FACE_LEFT_ANGLE = -PI / 2;
+  static const FACE_RIGHT_ANGLE = PI / 2;
+
+
   AnimationController _controller;
   Animation _animation;
+
+  double _angle =  FACE_RIGHT_ANGLE;
 
   @override
   void initState() {
@@ -42,8 +50,10 @@ class _UsingAnimationControllerBodyState
     ..addStatusListener((status){
       if (status == AnimationStatus.completed) {
         _controller.reverse();
+        _angle = FACE_LEFT_ANGLE;
       } else if (status == AnimationStatus.dismissed) {
         _controller.forward();
+        _angle = FACE_RIGHT_ANGLE;
       }
     });
 
@@ -67,9 +77,12 @@ class _UsingAnimationControllerBodyState
           heightFactor: 0.2,
           widthFactor: 0.2,
           alignment: _animation.value,
-          child: new Icon(
-            Icons.flight,
-            size: 80.0,
+          child: new Transform.rotate(
+            angle: _angle,
+            child: new Icon(
+              Icons.flight,
+              size: 80.0,
+            ),
           )
         ),
       ],
