@@ -25,6 +25,7 @@ class _UsingAnimationControllerBodyState
   with SingleTickerProviderStateMixin {
 
   AnimationController _controller;
+  Animation _animation;
 
   @override
   void initState() {
@@ -32,8 +33,6 @@ class _UsingAnimationControllerBodyState
 
 
     _controller = new AnimationController(
-      lowerBound: -1.0,
-      upperBound: 1.0,
       duration: new Duration(seconds: 2),
       vsync: this
     )
@@ -48,8 +47,14 @@ class _UsingAnimationControllerBodyState
       }
     });
 
+    Tween _tween = new AlignmentTween(
+      begin: new Alignment(-1.0, 0.0),
+      end: new Alignment(1.0, 0.0),
+    );
 
-    _controller.forward(from: -1.0);
+    _animation = _tween.animate(_controller);
+
+    _controller.forward();
   }
 
   @override
@@ -61,7 +66,7 @@ class _UsingAnimationControllerBodyState
         new FractionallySizedBox(
           heightFactor: 0.2,
           widthFactor: 0.2,
-          alignment: new Alignment(_controller.value, 0.0),
+          alignment: _animation.value,
           child: new Icon(
             Icons.flight,
             size: 80.0,
